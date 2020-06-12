@@ -12,7 +12,7 @@
     <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
 
     <label for="blur">Blur:</label>
-    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+    <input id="blur" type="range" name="blur" min="0" max="25" value="0" data-sizing="px">
 
     <label for="base">Base Color</label>
     <input id="base" type="color" name="base" value="#ffc600">
@@ -25,6 +25,11 @@
     /*
       misc styles, nothing to do with CSS variables
     */
+    :root {
+      --blur: 0px;
+      --base: #ffc600;
+      --translate: 10px;
+    }
 
     body {
       text-align: center;
@@ -42,9 +47,42 @@
     input {
       width: 100px;
     }
+
+    img {
+      filter: blur(var(--blur));
+      background: var(--base);
+      padding: var(--translate);
+    }
   </style>
 
   <script>
+    const root = document.documentElement;
+    const blur = document.getElementById("blur")
+    const spacing = document.getElementById("spacing")
+    const base = document.getElementById("base")
+    
+
+    function changeBlur(event) {
+      const blurValue = event.target.value
+      root.style.setProperty("--blur", blurValue + "px")
+    }
+
+    function changeSpacing(event) {
+      const spacingValue = event.target.value
+      root.style.setProperty("--translate", spacingValue + "px")
+    }
+
+    function changeBase(event) {
+      const baseValue = event.target.value
+      root.style.setProperty("--base", baseValue)
+    }
+
+
+    base.oninput = changeBase;
+    blur.oninput = changeBlur;
+    spacing.oninput = changeSpacing;
+
+
   </script>
 
 </body>
