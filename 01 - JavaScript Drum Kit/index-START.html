@@ -59,6 +59,21 @@
 
 <script>
 
+document.addEventListener("keydown", (event) => {
+  keyId = event.keyCode;
+  audioFile = document.querySelector(`audio[data-key="${keyId}"]`);
+  divChanged = document.querySelector(`div[data-key="${keyId}"]`)
+  audioFile.currentTime = 0;
+  audioFile.play();
+  divChanged.classList.add("playing");
+});
+
+document.addEventListener("keyup", (event) => {
+  divChanged = document.querySelector(`div[data-key="${keyId}"]`)
+  divChanged.classList.remove("playing");
+});
+
+
 </script>
 
 
