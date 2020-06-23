@@ -7,6 +7,21 @@
 </head>
 <body>
 <script>
+
+const code = "ArrowUp,ArrowDown,ArrowUp,ArrowDown,ArrowLeft,ArrowRight,ArrowLeft,ArrowRight,b,a,Enter";
+const sequence = [];
+
+//, 
+
+window.addEventListener("keydown", e => {
+  sequence.push(e.key);
+  console.log(sequence.join());
+  if (sequence.join().includes(code)) {
+    console.log("You sneaky player");
+    cornify_add();
+  }
+});
+
 </script>
 </body>
 </html>
