@@ -182,6 +182,26 @@
     </li>
   </ul>
 <script>
+  const elements = document.querySelectorAll("li");
+
+  const splittedElements = [];
+  
+  elements.forEach(element => {
+    splittedElements.push(element.dataset.time.split(":"));
+  });
+
+  const reducer = (accumulator, currentValue) => {
+    return accumulator + parseInt(currentValue[0]) * 60 + parseInt(currentValue[1]);
+  }
+
+  let totalSeconds = splittedElements.reduce(reducer, 0);
+  const hours = Math.floor(totalSeconds / 3600);
+  totalSeconds = totalSeconds - hours * 3600
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds - minutes * 60;
+
+  console.log(`${hours}:${minutes}:${seconds}`)
+
 </script>
 </body>
 </html>
