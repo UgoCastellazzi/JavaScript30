@@ -54,6 +54,17 @@
   </div>
 
 <script>
+  const header = document.querySelector("header");
+  const logo = document.querySelector(".logo");
+
+  window.onscroll = function(){
+    if(header.getBoundingClientRect().bottom > 0){
+        logo.style.maxWidth = "0%";
+    }
+    if(header.getBoundingClientRect().bottom < 0){
+        logo.style.maxWidth = "20%";
+    }
+  }
 
 </script>
 
